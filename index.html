@@ -3,10 +3,21 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-  <title>NetQoS Monitor | My Portfolio</title>
+  <meta name="theme-color" content="#070b14">
+  <meta name="description" content="Explore NetQoS Monitor, a Python-based network diagnostics dashboard.">
+  <title>NetQoS Monitor | Developer Portfolio</title>
 
   <style>
+    :root {
+      --bg: #070b14;
+      --panel: #0d1626;
+      --border: #20364a;
+      --cyan: #67e8f9;
+      --blue: #38bdf8;
+      --text: #f1f5f9;
+      --muted: #9baec3;
+    }
+
     * {
       margin: 0;
       padding: 0;
@@ -15,103 +26,190 @@
 
     html {
       scroll-behavior: smooth;
+      scroll-padding-top: 90px;
     }
 
     body {
-      font-family: Arial, sans-serif;
-      background: #080d18;
-      color: #f1f5f9;
+      background:
+        radial-gradient(ellipse at 50% 0%,
+          rgba(8, 145, 178, 0.13), transparent 50%),
+        var(--bg);
+      color: var(--text);
+      font-family: Inter, "Segoe UI", Arial, sans-serif;
       line-height: 1.7;
+      overflow-x: hidden;
     }
 
     a {
+      color: inherit;
       text-decoration: none;
     }
 
     .container {
-      width: 90%;
-      max-width: 1000px;
+      width: min(1100px, 90%);
       margin: auto;
     }
 
+    /* Navigation */
+
     header {
-      border-bottom: 1px solid #26364c;
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      background: rgba(7, 11, 20, 0.82);
+      backdrop-filter: blur(16px);
+      border-bottom: 1px solid rgba(103, 232, 249, 0.12);
     }
 
     nav {
-      min-height: 75px;
+      min-height: 74px;
       display: flex;
       align-items: center;
       justify-content: space-between;
+      gap: 20px;
     }
 
     .logo {
-      color: #67e8f9;
-      font-size: 20px;
-      font-weight: bold;
+      font-weight: 800;
+      font-size: 19px;
+      letter-spacing: 1px;
+      color: var(--cyan);
+      text-shadow: 0 0 18px rgba(103, 232, 249, 0.35);
     }
 
-    nav a:last-child {
-      color: #a6b4c8;
+    .nav-link {
+      color: var(--muted);
+      font-size: 14px;
+      transition: color 0.25s;
     }
+
+    .nav-link:hover {
+      color: var(--cyan);
+    }
+
+    /* Hero */
 
     .hero {
-      padding: 100px 0 75px;
+      position: relative;
+      padding: 115px 0 85px;
+      isolation: isolate;
+    }
+
+    .hero::before {
+      content: "";
+      position: absolute;
+      width: 280px;
+      height: 280px;
+      right: 4%;
+      top: 90px;
+      background: rgba(6, 182, 212, 0.12);
+      filter: blur(100px);
+      border-radius: 50%;
+      z-index: -1;
+      animation: breathe 6s ease-in-out infinite alternate;
     }
 
     .eyebrow {
-      color: #67e8f9;
+      color: var(--cyan);
       text-transform: uppercase;
-      letter-spacing: 2px;
-      font-size: 13px;
-      margin-bottom: 20px;
+      font-size: 12px;
+      letter-spacing: 3px;
+      font-weight: 700;
+      margin-bottom: 22px;
+    }
+
+    .status {
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+      padding: 7px 13px;
+      border: 1px solid var(--border);
+      border-radius: 30px;
+      color: #c6d7e8;
+      font-size: 12px;
+      margin-bottom: 28px;
+      background: rgba(13, 22, 38, 0.75);
+    }
+
+    .status-dot {
+      width: 7px;
+      height: 7px;
+      background: #4ade80;
+      border-radius: 50%;
+      box-shadow: 0 0 12px rgba(74, 222, 128, 0.7);
     }
 
     h1 {
-      font-size: clamp(38px, 7vw, 64px);
-      line-height: 1.15;
+      font-size: clamp(42px, 7vw, 76px);
+      line-height: 1.1;
+      letter-spacing: -2.5px;
+      max-width: 850px;
       margin-bottom: 25px;
     }
 
-    h1 span {
-      color: #67e8f9;
+    .gradient-text {
+      background: linear-gradient(100deg, #67e8f9, #38bdf8, #a5f3fc);
+      background-size: 200% auto;
+      color: transparent;
+      -webkit-background-clip: text;
+      background-clip: text;
+      animation: gradient 6s linear infinite;
     }
 
     .intro {
-      color: #a6b4c8;
-      max-width: 650px;
-      font-size: 18px;
-      margin-bottom: 30px;
+      max-width: 670px;
+      font-size: 17px;
+      color: var(--muted);
+      margin-bottom: 32px;
     }
 
     .buttons {
       display: flex;
       flex-wrap: wrap;
       gap: 14px;
-      margin-bottom: 30px;
+      margin-bottom: 35px;
     }
 
     .button {
-      display: inline-block;
-      padding: 12px 20px;
-      border-radius: 8px;
-      font-weight: bold;
-      transition: 0.2s;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 9px;
+      padding: 12px 19px;
+      border-radius: 9px;
+      border: 1px solid var(--border);
+      font-weight: 700;
+      font-size: 14px;
+      transition:
+        transform 0.25s ease,
+        box-shadow 0.25s ease,
+        border-color 0.25s ease,
+        background 0.25s ease;
     }
 
     .button:hover {
-      transform: translateY(-2px);
+      transform: translateY(-3px);
     }
 
     .primary {
-      background: #67e8f9;
-      color: #080d18;
+      color: #041019;
+      background: var(--cyan);
+      border-color: var(--cyan);
+      box-shadow: 0 0 20px rgba(103, 232, 249, 0.12);
+    }
+
+    .primary:hover {
+      box-shadow: 0 0 30px rgba(103, 232, 249, 0.38);
     }
 
     .secondary {
-      border: 1px solid #34445a;
-      color: #f1f5f9;
-      background: #101a2b;
+      color: var(--text);
+      background: rgba(13, 22, 38, 0.75);
+    }
+
+    .secondary:hover {
+      border-color: var(--cyan);
+      box-shadow: 0 0 22px rgba(103, 232, 249, 0.1);
     }
 
     .tags {
@@ -121,53 +219,79 @@
     }
 
     .tag {
-      color: #67e8f9;
-      background: #102338;
-      border: 1px solid #26364c;
-      border-radius: 20px;
-      padding: 5px 13px;
-      font-size: 13px;
+      padding: 6px 12px;
+      color: #b9d8e8;
+      background: rgba(14, 116, 144, 0.1);
+      border: 1px solid rgba(103, 232, 249, 0.16);
+      border-radius: 7px;
+      font-size: 12px;
     }
 
+    /* Sections */
+
     section {
-      padding: 55px 0;
+      padding: 65px 0;
     }
 
     .section-label {
-      color: #67e8f9;
-      text-transform: uppercase;
-      letter-spacing: 2px;
+      color: var(--cyan);
       font-size: 12px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      font-weight: 700;
       margin-bottom: 10px;
     }
 
     h2 {
-      font-size: 34px;
-      margin-bottom: 25px;
+      font-size: clamp(29px, 4vw, 40px);
+      letter-spacing: -1px;
+      margin-bottom: 28px;
     }
 
     .project-card {
-      background: #101a2b;
-      border: 1px solid #26364c;
-      border-radius: 16px;
-      padding: 32px;
+      position: relative;
+      overflow: hidden;
+      background: linear-gradient(145deg, #101d30, #0a111e 80%);
+      border: 1px solid #263d53;
+      border-radius: 18px;
+      padding: clamp(24px, 5vw, 42px);
+      transition: transform 0.3s, border-color 0.3s, box-shadow 0.3s;
+    }
+
+    .project-card::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 10%;
+      width: 80%;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--cyan), transparent);
+      opacity: 0.7;
+    }
+
+    .project-card:hover {
+      transform: translateY(-5px);
+      border-color: rgba(103, 232, 249, 0.5);
+      box-shadow: 0 18px 55px rgba(0, 0, 0, 0.28),
+                  0 0 30px rgba(6, 182, 212, 0.07);
     }
 
     .project-number {
-      color: #86efac;
+      color: var(--cyan);
       font-size: 12px;
       letter-spacing: 2px;
       margin-bottom: 10px;
     }
 
     h3 {
-      font-size: 28px;
-      margin-bottom: 15px;
+      font-size: clamp(25px, 4vw, 32px);
+      margin-bottom: 14px;
     }
 
     .project-description,
     .about-text {
-      color: #a6b4c8;
+      color: var(--muted);
+      max-width: 760px;
       margin-bottom: 22px;
     }
 
@@ -176,177 +300,247 @@
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
       gap: 12px;
-      margin: 25px 0;
+      margin: 28px 0;
     }
 
     .features li {
-      background: #0a1322;
-      border: 1px solid #26364c;
-      border-radius: 8px;
-      padding: 12px;
-      color: #d6e2f0;
+      background: rgba(5, 12, 23, 0.65);
+      border: 1px solid rgba(103, 232, 249, 0.12);
+      border-radius: 9px;
+      padding: 13px;
+      color: #d2deeb;
+      font-size: 14px;
+      transition: border-color 0.25s, transform 0.25s;
+    }
+
+    .features li:hover {
+      border-color: rgba(103, 232, 249, 0.45);
+      transform: translateY(-2px);
     }
 
     .features li::before {
-      content: "✓ ";
-      color: #86efac;
+      content: "↗  ";
+      color: var(--cyan);
     }
 
     .note {
-      color: #8194ad;
-      font-size: 13px;
-      margin-top: 20px;
+      color: #8094ab;
+      font-size: 12px;
+      margin-top: 22px;
+    }
+
+    .about-panel {
+      border-left: 2px solid var(--cyan);
+      padding: 6px 0 6px 22px;
+      background: linear-gradient(90deg, rgba(103, 232, 249, 0.04), transparent);
     }
 
     footer {
-      border-top: 1px solid #26364c;
+      margin-top: 45px;
+      border-top: 1px solid rgba(103, 232, 249, 0.13);
+      padding: 28px 0;
       text-align: center;
       color: #8194ad;
-      padding: 25px 0;
       font-size: 13px;
+    }
+
+    /* Entrance and glow animations */
+
+    @keyframes breathe {
+      from {
+        opacity: 0.45;
+        transform: scale(0.85);
+      }
+      to {
+        opacity: 0.9;
+        transform: scale(1.12);
+      }
+    }
+
+    @keyframes gradient {
+      to {
+        background-position: 200% center;
+      }
+    }
+
+    @keyframes appear {
+      from {
+        opacity: 0;
+        transform: translateY(16px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .hero > * {
+      animation: appear 0.7s ease both;
+    }
+
+    .hero > *:nth-child(2) {
+      animation-delay: 0.1s;
+    }
+
+    .hero > *:nth-child(3) {
+      animation-delay: 0.2s;
+    }
+
+    .hero > *:nth-child(4) {
+      animation-delay: 0.3s;
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        scroll-behavior: auto !important;
+        transition-duration: 0.01ms !important;
+      }
     }
 
     @media (max-width: 600px) {
       .hero {
-        padding-top: 65px;
+        padding: 75px 0 45px;
+      }
+
+      h1 {
+        letter-spacing: -1.5px;
+      }
+
+      section {
+        padding: 45px 0;
+      }
+
+      nav {
+        min-height: 65px;
+      }
+
+      .button {
+        width: 100%;
       }
 
       .project-card {
-        padding: 22px;
-      }
-
-      h2 {
-        font-size: 28px;
+        padding: 23px;
       }
     }
   </style>
 </head>
 
 <body>
-
   <header>
     <nav class="container">
-      <a href="#" class="logo">NETQOS.DEV</a>
-      <a href="#project">My Project ↓</a>
+      <a class="logo" href="#">NETQOS.DEV</a>
+      <a class="nav-link" href="#project">Featured Project ↓</a>
     </nav>
   </header>
 
-  <main>
-    <div class="container">
+  <main class="container">
+    <section class="hero">
+      <p class="eyebrow">Developer Portfolio / 2026</p>
 
-      <section class="hero">
-        <p class="eyebrow">Student Developer · Portfolio</p>
+      <div class="status">
+        <span class="status-dot"></span>
+        Learning by building
+      </div>
 
-        <h1>
-          Exploring networks.<br>
-          <span>Building useful tools.</span>
-        </h1>
+      <h1>
+        Exploring networks.<br>
+        <span class="gradient-text">Building useful tools.</span>
+      </h1>
 
-        <p class="intro">
-          I'm a B.Tech student learning software development
-          and computer networking. This portfolio showcases
-          NetQoS Monitor, a project I built to explore network
-          connectivity and diagnostics.
+      <p class="intro">
+        I'm a B.Tech student exploring Python, software development,
+        and computer networking. This portfolio showcases NetQoS
+        Monitor, my network diagnostics dashboard project.
+      </p>
+
+      <div class="buttons">
+        <a class="button primary"
+           href="https://netqos-monitor-b9zuqm5fav6qnutulp39bk.streamlit.app/"
+           target="_blank" rel="noopener noreferrer">
+          Launch Live App <span>↗</span>
+        </a>
+
+        <a class="button secondary"
+           href="https://github.com/pxdmininagarajan086-alt/netqos-monitor"
+           target="_blank" rel="noopener noreferrer">
+          View Source Code <span>↗</span>
+        </a>
+      </div>
+
+      <div class="tags">
+        <span class="tag">Python</span>
+        <span class="tag">Streamlit</span>
+        <span class="tag">TCP Connectivity</span>
+        <span class="tag">HTML & CSS</span>
+      </div>
+    </section>
+
+    <section id="project">
+      <p class="section-label">01 / Featured Project</p>
+      <h2>Things I've built</h2>
+
+      <article class="project-card">
+        <p class="project-number">PROJECT_001 · NETWORKING</p>
+        <h3>NetQoS Monitor</h3>
+
+        <p class="project-description">
+          A Python-based web application for running TCP connectivity
+          checks and presenting connection-time measurements and
+          test results in a clear dashboard.
         </p>
+
+        <ul class="features">
+          <li>TCP connectivity testing</li>
+          <li>Connection-time measurements</li>
+          <li>Success and failure summaries</li>
+          <li>Diagnostics and alerts</li>
+          <li>Session-based test history</li>
+          <li>Downloadable CSV reports</li>
+        </ul>
 
         <div class="buttons">
-          <a
-            class="button primary"
-            href="https://netqos-monitor-b9zuqm5fav6qnutulp39bk.streamlit.app/"
-            target="_blank"
-            rel="noopener noreferrer">
-            Launch Live App ↗
+          <a class="button primary"
+             href="https://netqos-monitor-b9zuqm5fav6qnutulp39bk.streamlit.app/"
+             target="_blank" rel="noopener noreferrer">
+            Try NetQoS Monitor ↗
           </a>
 
-          <a
-            class="button secondary"
-            href="https://github.com/pxdmininagarajan086-alt/netqos-monitor"
-            target="_blank"
-            rel="noopener noreferrer">
-            View Source Code ↗
+          <a class="button secondary"
+             href="https://github.com/pxdmininagarajan086-alt/netqos-monitor"
+             target="_blank" rel="noopener noreferrer">
+            Explore Repository ↗
           </a>
         </div>
 
-        <div class="tags">
-          <span class="tag">Python</span>
-          <span class="tag">Streamlit</span>
-          <span class="tag">Networking</span>
-          <span class="tag">HTML & CSS</span>
-        </div>
-      </section>
-
-      <section id="project">
-        <p class="section-label">01 / Featured Project</p>
-        <h2>My Work</h2>
-
-        <article class="project-card">
-          <p class="project-number">NETWORKING · PYTHON</p>
-
-          <h3>NetQoS Monitor</h3>
-
-          <p class="project-description">
-            NetQoS Monitor is a web-based network diagnostics
-            dashboard. It runs TCP connectivity tests and presents
-            connection-time measurements and test results in an
-            easy-to-understand interface.
-          </p>
-
-          <ul class="features">
-            <li>TCP connectivity tests</li>
-            <li>Connection-time measurements</li>
-            <li>Success and failure summaries</li>
-            <li>Diagnostics and alerts</li>
-            <li>Session-based test history</li>
-            <li>Downloadable CSV reports</li>
-          </ul>
-
-          <div class="buttons">
-            <a
-              class="button primary"
-              href="https://netqos-monitor-b9zuqm5fav6qnutulp39bk.streamlit.app/"
-              target="_blank"
-              rel="noopener noreferrer">
-              Try the Live App ↗
-            </a>
-
-            <a
-              class="button secondary"
-              href="https://github.com/pxdmininagarajan086-alt/netqos-monitor"
-              target="_blank"
-              rel="noopener noreferrer">
-              Explore the Code ↗
-            </a>
-          </div>
-
-          <p class="note">
-            Measurements reflect TCP connection tests from the
-            deployed application's environment. They do not directly
-            measure every visitor's local Wi-Fi performance.
-          </p>
-        </article>
-      </section>
-
-      <section id="about">
-        <p class="section-label">02 / Project Journey</p>
-
-        <h2>Learning by Building</h2>
-
-        <p class="about-text">
-          I created NetQoS Monitor to gain practical experience
-          with Python, interactive dashboards, network diagnostics,
-          and deploying applications online. I continue to improve
-          my skills through hands-on development.
+        <p class="note">
+          Measurements reflect TCP connection tests from the deployed
+          application environment, not a direct measurement of each
+          visitor's local Wi-Fi performance.
         </p>
-      </section>
+      </article>
+    </section>
 
-    </div>
+    <section id="about">
+      <p class="section-label">02 / My Approach</p>
+      <h2>Learning through projects.</h2>
+
+      <div class="about-panel">
+        <p class="about-text">
+          I built NetQoS Monitor to gain hands-on experience with Python,
+          interactive dashboards, network diagnostics, and deploying
+          applications online. I'm continuing to strengthen my skills
+          by turning what I learn into working projects.
+        </p>
+      </div>
+    </section>
   </main>
 
   <footer>
     <div class="container">
-      Built with HTML & CSS · NetQoS Monitor Portfolio
+      Designed with care · Built with HTML & CSS · NetQoS Monitor
     </div>
   </footer>
-
 </body>
 </html>
