@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>NetQoS Monitor | My Portfolio</title>
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      background: #080d18;
+      color: #f1f5f9;
+      line-height: 1.7;
+    }
+
+    a {
+      text-decoration: none;
+    }
+
+    .container {
+      width: 90%;
+      max-width: 1000px;
+      margin: auto;
+    }
+
+    header {
+      border-bottom: 1px solid #26364c;
+    }
+
+    nav {
+      min-height: 75px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .logo {
+      color: #67e8f9;
+      font-size: 20px;
+      font-weight: bold;
+    }
+
+    nav a:last-child {
+      color: #a6b4c8;
+    }
+
+    .hero {
+      padding: 100px 0 75px;
+    }
+
+    .eyebrow {
+      color: #67e8f9;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      font-size: 13px;
+      margin-bottom: 20px;
+    }
+
+    h1 {
+      font-size: clamp(38px, 7vw, 64px);
+      line-height: 1.15;
+      margin-bottom: 25px;
+    }
+
+    h1 span {
+      color: #67e8f9;
+    }
+
+    .intro {
+      color: #a6b4c8;
+      max-width: 650px;
+      font-size: 18px;
+      margin-bottom: 30px;
+    }
+
+    .buttons {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      margin-bottom: 30px;
+    }
+
+    .button {
+      display: inline-block;
+      padding: 12px 20px;
+      border-radius: 8px;
+      font-weight: bold;
+      transition: 0.2s;
+    }
+
+    .button:hover {
+      transform: translateY(-2px);
+    }
+
+    .primary {
+      background: #67e8f9;
+      color: #080d18;
+    }
+
+    .secondary {
+      border: 1px solid #34445a;
+      color: #f1f5f9;
+      background: #101a2b;
+    }
+
+    .tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .tag {
+      color: #67e8f9;
+      background: #102338;
+      border: 1px solid #26364c;
+      border-radius: 20px;
+      padding: 5px 13px;
+      font-size: 13px;
+    }
+
+    section {
+      padding: 55px 0;
+    }
+
+    .section-label {
+      color: #67e8f9;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      font-size: 12px;
+      margin-bottom: 10px;
+    }
+
+    h2 {
+      font-size: 34px;
+      margin-bottom: 25px;
+    }
+
+    .project-card {
+      background: #101a2b;
+      border: 1px solid #26364c;
+      border-radius: 16px;
+      padding: 32px;
+    }
+
+    .project-number {
+      color: #86efac;
+      font-size: 12px;
+      letter-spacing: 2px;
+      margin-bottom: 10px;
+    }
+
+    h3 {
+      font-size: 28px;
+      margin-bottom: 15px;
+    }
+
+    .project-description,
+    .about-text {
+      color: #a6b4c8;
+      margin-bottom: 22px;
+    }
+
+    .features {
+      list-style: none;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 12px;
+      margin: 25px 0;
+    }
+
+    .features li {
+      background: #0a1322;
+      border: 1px solid #26364c;
+      border-radius: 8px;
+      padding: 12px;
+      color: #d6e2f0;
+    }
+
+    .features li::before {
+      content: "✓ ";
+      color: #86efac;
+    }
+
+    .note {
+      color: #8194ad;
+      font-size: 13px;
+      margin-top: 20px;
+    }
+
+    footer {
+      border-top: 1px solid #26364c;
+      text-align: center;
+      color: #8194ad;
+      padding: 25px 0;
+      font-size: 13px;
+    }
+
+    @media (max-width: 600px) {
+      .hero {
+        padding-top: 65px;
+      }
+
+      .project-card {
+        padding: 22px;
+      }
+
+      h2 {
+        font-size: 28px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <header>
+    <nav class="container">
+      <a href="#" class="logo">NETQOS.DEV</a>
+      <a href="#project">My Project ↓</a>
+    </nav>
+  </header>
+
+  <main>
+    <div class="container">
+
+      <section class="hero">
+        <p class="eyebrow">Student Developer · Portfolio</p>
+
+        <h1>
+          Exploring networks.<br>
+          <span>Building useful tools.</span>
+        </h1>
+
+        <p class="intro">
+          I'm a B.Tech student learning software development
+          and computer networking. This portfolio showcases
+          NetQoS Monitor, a project I built to explore network
+          connectivity and diagnostics.
+        </p>
+
+        <div class="buttons">
+          <a
+            class="button primary"
+            href="https://netqos-monitor-b9zuqm5fav6qnutulp39bk.streamlit.app/"
+            target="_blank"
+            rel="noopener noreferrer">
+            Launch Live App ↗
+          </a>
+
+          <a
+            class="button secondary"
+            href="https://github.com/pxdmininagarajan086-alt/netqos-monitor"
+            target="_blank"
+            rel="noopener noreferrer">
+            View Source Code ↗
+          </a>
+        </div>
+
+        <div class="tags">
+          <span class="tag">Python</span>
+          <span class="tag">Streamlit</span>
+          <span class="tag">Networking</span>
+          <span class="tag">HTML & CSS</span>
+        </div>
+      </section>
+
+      <section id="project">
+        <p class="section-label">01 / Featured Project</p>
+        <h2>My Work</h2>
+
+        <article class="project-card">
+          <p class="project-number">NETWORKING · PYTHON</p>
+
+          <h3>NetQoS Monitor</h3>
+
+          <p class="project-description">
+            NetQoS Monitor is a web-based network diagnostics
+            dashboard. It runs TCP connectivity tests and presents
+            connection-time measurements and test results in an
+            easy-to-understand interface.
+          </p>
+
+          <ul class="features">
+            <li>TCP connectivity tests</li>
+            <li>Connection-time measurements</li>
+            <li>Success and failure summaries</li>
+            <li>Diagnostics and alerts</li>
+            <li>Session-based test history</li>
+            <li>Downloadable CSV reports</li>
+          </ul>
+
+          <div class="buttons">
+            <a
+              class="button primary"
+              href="https://netqos-monitor-b9zuqm5fav6qnutulp39bk.streamlit.app/"
+              target="_blank"
+              rel="noopener noreferrer">
+              Try the Live App ↗
+            </a>
+
+            <a
+              class="button secondary"
+              href="https://github.com/pxdmininagarajan086-alt/netqos-monitor"
+              target="_blank"
+              rel="noopener noreferrer">
+              Explore the Code ↗
+            </a>
+          </div>
+
+          <p class="note">
+            Measurements reflect TCP connection tests from the
+            deployed application's environment. They do not directly
+            measure every visitor's local Wi-Fi performance.
+          </p>
+        </article>
+      </section>
+
+      <section id="about">
+        <p class="section-label">02 / Project Journey</p>
+
+        <h2>Learning by Building</h2>
+
+        <p class="about-text">
+          I created NetQoS Monitor to gain practical experience
+          with Python, interactive dashboards, network diagnostics,
+          and deploying applications online. I continue to improve
+          my skills through hands-on development.
+        </p>
+      </section>
+
+    </div>
+  </main>
+
+  <footer>
+    <div class="container">
+      Built with HTML & CSS · NetQoS Monitor Portfolio
+    </div>
+  </footer>
+
+</body>
+</html>
